@@ -1,12 +1,6 @@
-<div style="text-align: center;">
-  <h1>
-    Welcome to {{title}}!
-  </h1>
-  <app-header>
-
-  </app-header>
-  <app-banner></app-banner>
-  <app-blogpost-featured></app-blogpost-featured>
-  <app-footer></app-footer>
-</div>
+<!--The content below is only a placeholder and can be replaced.-->
+<app-header></app-header>
+<app-banner *ngIf="router.url == '/'"></app-banner>
+<app-blogpost-featured *ngIf="router.url == '/'"></app-blogpost-featured>
 <router-outlet></router-outlet>
+<app-footer></app-footer>

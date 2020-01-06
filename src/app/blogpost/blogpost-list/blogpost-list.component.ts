@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { BlogpostService } from '../blogpost.service';
+import { Blogpost } from '../blogpost';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-blogpost-list',
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BlogpostListComponent implements OnInit {
 
-  constructor() { }
+  title = 'Blogs';
+  blogs: Blogpost;
+  error: {};
+  constructor(
+    private titleService: Title,
+    private blogpostService: BlogpostService
+  ) { }
 
   ngOnInit() {
+    this.titleService.setTitle(this.title);
+    this.blogpostService.getBlogs().subscribe(
+      (data: Blogpost) => this.blogs = data,
+      error => this.error = error
+    );
+    console.log(this.blogs);
   }
 
 }
