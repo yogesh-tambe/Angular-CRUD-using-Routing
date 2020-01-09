@@ -4,11 +4,11 @@
       <div class="row">
         <div class="col-md-4" *ngFor="let blog of blogs">
           <div class="blog-box">
-            <img src="{{blog.image}}" alt="blog1"/>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/1200px-Angular_full_color_logo.svg.png" alt="blog1"/>
             <h3>{{blog.title}}</h3>
             <p>by <span>{{blog.author}}</span> on <span>{{blog.created_at | date:'mediumDate'}}</span></p>
             <p>{{blog.short_desc}}</p>
-            <a routerLink="['/blog', blog.id]" class="btn btn-danger">Read more...</a>
+            <a [routerLink]="['/blog', blog.id]" class="btn btn-danger">Read more...</a>
           </div>
         </div>
       </div>

@@ -21,8 +21,10 @@ export class BlogpostListComponent implements OnInit {
   ngOnInit() {
     this.titleService.setTitle(this.title);
     this.blogpostService.getBlogs().subscribe(
-      (data: Blogpost) => this.blogs = data,
-      error => this.error = error
+      (data: Blogpost) => { 
+        console.log(data)
+        this.blogs = data,
+      error => this.error = error }
     );
     console.log(this.blogs);
   }

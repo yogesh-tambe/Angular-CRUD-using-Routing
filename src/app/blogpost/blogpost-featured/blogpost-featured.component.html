@@ -1,60 +1,20 @@
 <section class="featured-blog mtb-40">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4">
-          <div class="blog-box">
-            <img src="assets/images/img1.jpg" alt="blog1" />
-            <h3>Sample blog post 1</h3>
-            <p>by <span>Define</span> on <span>January 01, 2020</span></p>
-            <p>Text for blogpost 1 </p>
-            <a href="detail.html" class="btn btn-danger">Read more...</a>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="blog-box">
-            <img src="assets/images/img2.jpg" alt="blog1" />
-            <h3>Sample blog post 2</h3>
-            <p>by <span>Define</span> on <span>January 02, 2020</span></p>
-            <p>Text for blogost 2</p>
-            <a href="detail.html" class="btn btn-danger">Read more...</a>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="blog-box">
-            <img src="assets/images/img3.jpg" alt="blog1" />
-            <h3>Sample blog post 3</h3>
-            <p>by <span>RSGiTECH</span> on <span>January 03, 2020</span></p>
-            <p>Text for blogpost 3 </p>
-            <a href="detail.html" class="btn btn-danger">Read more...</a>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="blog-box">
-            <img src="assets/images/img4.jpg" alt="blog1" />
-            <h3>Sample blog post 4</h3>
-            <p>by <span>Define</span> on <span>January 04, 2020</span></p>
-            <p>Text for blogpost 4</p>
-            <a href="detail.html" class="btn btn-danger">Read more...</a>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="blog-box">
-            <img src="assets/images/img5.jpg" alt="blog1" />
-            <h3>Sample blog post 5</h3>
-            <p>by <span>Define</span> on <span>January 05, 2020</span></p>
-            <p>Text for blogpost 5</p>
-            <a href="detail.html" class="btn btn-danger">Read more...</a>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="blog-box">
-            <img src="assets/images/img6.jpg" alt="blog1" />
-            <h3>Sample blog post 6</h3>
-            <p>by <span>Define</span> on <span>January 06, 2020</span></p>
-            <p>Text for blogpost 6</p>
-            <a href="detail.html" class="btn btn-danger">Read more...</a>
-          </div>
+  <div class="container">
+    <h1>{{title}}</h1>
+    <div class="row">
+      <div class="col-md-4" *ngFor="let blog of blogs">
+        <div class="blog-box">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/1200px-Angular_full_color_logo.svg.png" alt="blog1"/>
+          <h3>{{blog.title}}</h3>
+          <p>by <span>{{blog.author}}</span> on <span>{{blog.created_at | date:'mediumDate'}}</span></p>
+          <p>{{blog.short_desc}}</p>
+          <a [routerLink]="['/blog', blog.id]" class="btn btn-danger">Read more...</a>
         </div>
       </div>
     </div>
+    <div class="service-error" *ngIf="error">
+      <h1>{{error.errorTitle}}</h1>
+      <h3>{{error.errorDesc}}</h3>
+    </div>
+  </div>
 </section>

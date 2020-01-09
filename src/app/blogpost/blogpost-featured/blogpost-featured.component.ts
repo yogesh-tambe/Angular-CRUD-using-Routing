@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { BlogpostService } from '../blogpost.service';
+import { Blogpost } from '../blogpost';
 
 @Component({
   selector: 'app-blogpost-featured',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BlogpostFeaturedComponent implements OnInit {
 
-  constructor() { }
+  blogs: Blogpost;
+  error: {};
+  constructor(
+    private blogpostService: BlogpostService
+  ) { }
 
   ngOnInit() {
+    this.blogpostService.getBlogs().subscribe(
+      (data: Blogpost) => { 
+        console.log(data)
+        this.blogs = data,
+      error => this.error = error }
+    );
+    console.log(this.blogs);
   }
-
 }
