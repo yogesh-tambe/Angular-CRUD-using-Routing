@@ -13,22 +13,31 @@ import { switchMap } from 'rxjs/operators';
 })
 export class BlogpostDetailComponent implements OnInit {
 
-  blog$: Observable<Blogpost>;
+  blog$: Blogpost;
   paramMap: any;
+  blogId: number;
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private blogpostService: BlogpostService,
     private titleService: Title
-  ) { }
+  ) {
+      this.route.params.subscribe(
+      params => this.blogId = params.id) }
 
   ngOnInit() {
-    this.blog$ = this.paramMap.pipe(
-      switchMap((params: ParamMap) =>
-        this.blogpostService.getBlog(+params.get('id'))
-      )
-    );
+
+    this.blogpostService.getBlogById(this.blogId).subscribe(
+      (data: Blogpost) => 
+      this.blog$ = data)
+      console.log(this.blog$);
+      
+    // this.blog$ = this.paramMap.pipe(
+    //   switchMap((params: ParamMap) =>
+    //     this.blogpostService.getBlogById(+params.get('id'))
+    //   )
+    // );
     this.titleService.setTitle('Blog Detail');
   }
-
 }

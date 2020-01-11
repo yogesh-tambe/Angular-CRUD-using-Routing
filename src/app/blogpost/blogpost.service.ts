@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Blogpost } from './blogpost';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpBackend } from '@angular/common/http';
 import { throwError, Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Category } from './category';
@@ -10,9 +10,14 @@ import { Category } from './category';
 })
 export class BlogpostService {
 
-  ServerUrl = "http://localhost:3001/";
+  ServerUrl = "http://localhost:3000";
   errorData: {};
-  constructor(private http: HttpClient) { }
+  
+  private http: HttpClient;
+
+  constructor(handler: HttpBackend) {
+    this.http = new HttpClient(handler);
+  }
 
   getBlogs() {
     return this.http.get<Blogpost>(this.ServerUrl + '/blogs').pipe(
@@ -20,11 +25,17 @@ export class BlogpostService {
     );
   }
 
-  getBlog(id: number) {
-    return this.http.get<Blogpost>(this.ServerUrl + '/blogs/' + id)
-    .pipe(
-      catchError(this.handleError)
-    );
+  // getBlog(id: number) {
+  //   return this.http.get<Blogpost>(this.ServerUrl + '/blogs/' + id)
+  //   .pipe(
+  //     catchError(this.handleError)
+  //   );
+  // }
+
+ 
+  
+  getBlogById(blogId){
+    return this.http.get('http://localhost:3000/blogs/'+blogId);
   }
 
   // getRecentBlogs() {
@@ -34,16 +45,16 @@ export class BlogpostService {
   // }
 
   getCategories() {
-      return this.http.get<Category>("http://localhost:3001/categories").pipe(
+      return this.http.get<Category>("http://localhost:3000/categories").pipe(
         catchError(this.handleError)
       );
   }
 
-  // getBlog(id: number) {
-  //   return this.http.get<Blogpost>(this.ServerUrl+"/"+id).pipe(
-  //     catchError(this.handleError)
-  //   );
-  // }
+  getFeaturedBlogs() {
+    return this.http.get<Blogpost>(this.ServerUrl + '/featured_blogs').pipe(
+      catchError(this.handleError)
+    );
+  }
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {

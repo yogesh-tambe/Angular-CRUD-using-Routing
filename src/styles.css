@@ -17,7 +17,7 @@ h1 {font-size: 2.4rem;margin-bottom: 30px;}
 .intro-text-box h1 {font-size:3em;}
 
 .blog-right h3 {background-color:#000;color: #fff; padding:5px 15px;font-size:20px;}
-.detail-img {margin:40px 0px;}
+.detail-img img {width: 50%;}
 .rb-box-img { margin-right:15px; }
 .rb-box-img img { width:100px;}
 .rb-box {display: flex;}

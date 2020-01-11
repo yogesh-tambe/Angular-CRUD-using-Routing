@@ -21,6 +21,17 @@
             <a [routerLink]="['/blog']" routerLinkActive="active" class="nav-link">Blog</a>
           </li>
         </ul>
+        <ul class="navbar-nav  ml-auto">
+          <li class="nav-item" *ngIf="!isLoggedIn">
+            <a routerLink="/login" class="nav-link">Login</a>
+          </li>
+          <li class="nav-item" *ngIf="isLoggedIn">
+            <a routerLink="/admin" class="nav-link">Admin Dashboard</a>
+          </li>
+          <li class="nav-item" *ngIf="isLoggedIn">
+              <a routerLink="/login" class="nav-link">Logout</a>
+            </li>
+        </ul>
       </div>
     </div>
 </nav>
