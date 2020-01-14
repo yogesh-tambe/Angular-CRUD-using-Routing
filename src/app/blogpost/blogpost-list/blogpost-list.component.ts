@@ -28,5 +28,4 @@ export class BlogpostListComponent implements OnInit {
     );
     console.log(this.blogs);
   }
-
 }
