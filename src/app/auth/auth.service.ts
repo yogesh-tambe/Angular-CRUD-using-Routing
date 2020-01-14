@@ -37,7 +37,7 @@ export class AuthService {
 
   getAuthorizationToken() {
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    return currentUser.token;
+    return currentUser;
   }
 
   logout() {
@@ -58,7 +58,7 @@ export class AuthService {
 
     // return an observable with a user-facing error message
     this.errorData = {
-      errorTitle: 'Oops! Request for document failed',
+      // errorTitle: 'Oops! Request for document failed',
       errorDesc: 'Something bad happened. Please try again later.'
     };
     return throwError(this.errorData);

@@ -1,1 +1,35 @@
-<p>manage-blogs works!</p>
+
+<div class="dash-header">
+    <div class="dash-title">
+        <h1>{{title}}</h1>
+    </div>
+    <div class="dash-nav">
+        <a [routerLink] = "['/admin/blogs/create']" class="btn btn-success">Add Post</a>
+    </div>
+  </div>
+  <table class="table table-bordered table-striped">
+    <tr>
+        <th>#ID</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Created At</th>
+        <th>Action</th>
+    </tr>
+    <tr *ngFor="let blog of blogs">
+        <td>{{blog.id}}</td>
+        <td>{{blog.title}}</td>
+        <td>{{blog.author}}</td>
+        <td>{{blog.created_at | date: 'mediumDate'}}</td>
+        <td class="action">
+            <p>    
+                <!-- <button type="button" [routerLink] = "['/admin/blogs/edit/', blog.id]" (click)="loadBlogToEdit(blog.id)">Edit</button>                         -->
+                <!-- <a [routerLink] = "['/admin/blogs/edit', blog.id]" (click)="loadBlogToEdit(blog.id)" class="btn btn-info btn-sm">Edit</a> -->
+            </p>
+            <p>
+                <button type="button" class = "btn btn-danger btn-sm" (click)="deleteBlog(blog.id)">Delete</button>
+            </p>
+        </td>
+    </tr>
+  </table>
+  {{error}}
+  

@@ -1,6 +1,7 @@
 
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { BlogFormComponent } from './blog-form/blog-form.component';
 
 import { AdminComponent } from './admin/admin.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
@@ -20,6 +21,8 @@ const routes: Routes = [
       path: '',
       children: [
         { path: 'blogs', component: ManageBlogsComponent },
+        { path: 'blogs/create', component: BlogFormComponent },
+        { path: 'blogs/edit/:id', component: BlogFormComponent },
         { path: 'categories', component: ManageCategoriesComponent },
         { path: 'pages', component: ManagePagesComponent },
         { path: '', component: AdminDashboardComponent }
