@@ -22,6 +22,7 @@ export class AuthService {
         console.log(user)
         if(user) {
           User.token = user;
+          localStorage.setItem('access_token', JSON.stringify(user));
           console.log("hiiiiiiiiiiiiiiii");
           console.log(User.token);
         // if (user && user.username) {
@@ -42,9 +43,10 @@ export class AuthService {
   }
 
   getAuthorizationToken() {
-    console.log("In get authorization token");
+    console.log("In get authorization");
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    return currentUser;
+    // return currentUser;
+    return localStorage.getItem('access_token')
   }
 
   logout() {

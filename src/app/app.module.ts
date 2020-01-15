@@ -1,6 +1,6 @@
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpInterceptor } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { BlogpostModule } from './blogpost/blogpost.module';

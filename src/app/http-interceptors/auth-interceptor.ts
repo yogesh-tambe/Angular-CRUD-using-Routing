@@ -11,9 +11,11 @@ export class AuthInterceptor implements HttpInterceptor {
     constructor(private authService: AuthService) {}
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-
-        if (this.authService.isLoggedIn()) {
-            const authToken = this.authService.getAuthorizationToken();
+        console.log("In auth interceptor");
+        console.log(localStorage.getItem('access_token'));
+        const authToken = this.authService.getAuthorizationToken();
+        if (authToken) {
+            console.log("In auth interceptor2");
             req = req.clone({
                 setHeaders:
                     { Authorization: authToken }
