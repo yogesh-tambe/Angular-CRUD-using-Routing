@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
+import { User } from './login/user';
 
 @Injectable({
   providedIn: 'root'
@@ -20,8 +21,13 @@ export class AuthService {
     .pipe(map(user => {
         console.log(user)
         if(user) {
+          User.token = user;
+          console.log("hiiiiiiiiiiiiiiii");
+          console.log(User.token);
         // if (user && user.username) {
           localStorage.setItem('currentUser', JSON.stringify(user));
+          console.log("hiiiiiiiiiiiiiiii");
+          console.log(localStorage.currentUser);
         }
       }),
       catchError(this.handleError)
@@ -36,6 +42,7 @@ export class AuthService {
   }
 
   getAuthorizationToken() {
+    console.log("In get authorization token");
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     return currentUser;
   }

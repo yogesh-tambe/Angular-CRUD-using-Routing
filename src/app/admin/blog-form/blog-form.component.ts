@@ -62,7 +62,7 @@ export class BlogFormComponent implements OnInit {
           this.loadAllBlogs();
           this.blogIdToUpdate = null;
           this.blogForm.reset();
-          // this.router.navigate(['/admin/blogs']);
+          this.router.navigate(['/admin/blogs']);
         }
       );
     } 
