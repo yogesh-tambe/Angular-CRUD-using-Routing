@@ -19,16 +19,16 @@ export class AuthService {
   login(username: string, password: string) {
     return this.http.post<any>(this.serverUrl + "/user_token", {auth: {email: username, password: password}})
     .pipe(map(user => {
-        console.log(user)
+        // console.log(user)
         if(user) {
           User.token = user;
-          localStorage.setItem('access_token', JSON.stringify(user));
-          console.log("hiiiiiiiiiiiiiiii");
-          console.log(User.token);
+          // localStorage.setItem('access_token', JSON.stringify(user));
+          // console.log("hiiiiiiiiiiiiiiii");
+          // console.log(User.token);
         // if (user && user.username) {
           localStorage.setItem('currentUser', JSON.stringify(user));
-          console.log("hiiiiiiiiiiiiiiii");
-          console.log(localStorage.currentUser);
+          // console.log("hiiiiiiiiiiiiiiii");
+          // console.log(localStorage.currentUser);
         }
       }),
       catchError(this.handleError)
@@ -43,7 +43,7 @@ export class AuthService {
   }
 
   getAuthorizationToken() {
-    console.log("In get authorization");
+    // console.log("In get authorization");
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     // return currentUser;
     return localStorage.getItem('access_token')

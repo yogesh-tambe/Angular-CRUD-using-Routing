@@ -19,4 +19,8 @@ import { CategoriesComponent } from './categories/categories.component';
     BlogpostFeaturedComponent
   ],
 })
-export class BlogpostModule { }
+export class BlogpostModule { 
+  constructor() {
+    console.log("Blogpost module loaded");
+  }
+}

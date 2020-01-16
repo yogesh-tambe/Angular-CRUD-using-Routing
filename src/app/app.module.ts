@@ -10,7 +10,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { BannerComponent } from './banner/banner.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { AdminModule } from './admin/admin.module';
+// import { AdminModule } from './admin/admin.module';
 import { AuthModule } from './auth/auth.module';
 import { httpInterceptorProviders } from './http-interceptors/index';
 
@@ -28,11 +28,15 @@ import { httpInterceptorProviders } from './http-interceptors/index';
     HttpClientModule,
     BlogpostModule,
     CmspageModule,
-    AdminModule,
+    // AdminModule,
     AuthModule,
     AppRoutingModule
   ],
   providers: [Title, httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor() {
+    console.log("App module loaded");
+  }
+ }

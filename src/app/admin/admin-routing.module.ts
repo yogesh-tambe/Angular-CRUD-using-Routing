@@ -13,7 +13,7 @@ import { AuthGuard } from '../auth/auth.guard';
 
 const routes: Routes = [
   {
-    path: 'admin',
+    path: '',
     component: AdminComponent,
     canActivate: [AuthGuard],
     children: [
@@ -23,8 +23,8 @@ const routes: Routes = [
         { path: 'blogs', component: ManageBlogsComponent },
         { path: 'blogs/create', component: BlogFormComponent },
         { path: 'blogs/edit/:id', component: BlogFormComponent },
-        { path: 'categories', component: ManageCategoriesComponent },
-        { path: 'pages', component: ManagePagesComponent },
+        // { path: 'categories', component: ManageCategoriesComponent }
+        // { path: 'pages', component: ManagePagesComponent },
         { path: '', component: AdminDashboardComponent }
       ],
     }
@@ -36,4 +36,8 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class AdminRoutingModule { }
+export class AdminRoutingModule {
+  constructor() {
+    console.log("Admin module loaded");
+  }
+ }
