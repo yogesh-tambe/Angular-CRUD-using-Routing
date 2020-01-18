@@ -13,6 +13,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 // import { AdminModule } from './admin/admin.module';
 import { AuthModule } from './auth/auth.module';
 import { httpInterceptorProviders } from './http-interceptors/index';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbdModalBasic } from './auth/login/modal-basic';
 
 
 @NgModule({
@@ -21,7 +23,8 @@ import { httpInterceptorProviders } from './http-interceptors/index';
     HeaderComponent,
     FooterComponent,
     BannerComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    NgbdModalBasic
   ],
   imports: [
     BrowserModule,
@@ -30,7 +33,7 @@ import { httpInterceptorProviders } from './http-interceptors/index';
     CmspageModule,
     // AdminModule,
     AuthModule,
-    AppRoutingModule
+    AppRoutingModule,NgbModule
   ],
   providers: [Title, httpInterceptorProviders],
   bootstrap: [AppComponent]

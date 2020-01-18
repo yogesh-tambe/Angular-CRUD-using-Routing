@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ɵConsole } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
@@ -27,8 +27,12 @@ export class AuthService {
           // console.log(User.token);
         // if (user && user.username) {
           localStorage.setItem('currentUser', JSON.stringify(user));
-          // console.log("hiiiiiiiiiiiiiiii");
-          // console.log(localStorage.currentUser);
+          localStorage.setItem('access_token', JSON.stringify(user));
+          console.log("hiiiiiiiiiiiiiiii");
+          console.log(localStorage.currentUser);
+        }
+        else {
+          console.log("Invaliddd!!!!!!!");
         }
       }),
       catchError(this.handleError)
@@ -43,14 +47,21 @@ export class AuthService {
   }
 
   getAuthorizationToken() {
-    // console.log("In get authorization");
+    console.log("In get authorization");
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     // return currentUser;
-    return localStorage.getItem('access_token')
+    // console.log(localStorage.getItem('access_token'));
+    // return localStorage.getItem('access_token')
+    return localStorage.getItem('currentUser');
   }
 
   logout() {
+    console.log('From logout');
+    console.log(localStorage.currentUser);
     localStorage.removeItem('currentUser');
+    console.log(localStorage.currentUser);
+    // localStorage.removeItem('access_token');
+    localStorage.clear
   }
 
   private handleError(error: HttpErrorResponse) {
