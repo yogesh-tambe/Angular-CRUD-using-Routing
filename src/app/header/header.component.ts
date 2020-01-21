@@ -19,4 +19,10 @@ export class HeaderComponent implements OnInit {
   setPageTitle(title: string) {
     this.titleService.setTitle(title);
   }
+
+  validateAdmin() {
+    if(!this.authService.isLoggedIn()) {
+      this.authService.showToaster();
+    }
+  }
 }

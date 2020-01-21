@@ -11,7 +11,8 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~8.2.14",
+    "@angular/animations": "^8.2.14",
+    "@angular/cdk": "^8.2.3",
     "@angular/common": "~8.2.14",
     "@angular/compiler": "~8.2.14",
     "@angular/core": "~8.2.14",
@@ -23,7 +24,9 @@
     "@ng-bootstrap/ng-bootstrap": "^5.1.5",
     "bootstrap": "^4.4.1",
     "ng2-opd-popup": "^1.1.21",
+    "ngx-toastr": "^11.3.2",
     "rxjs": "~6.4.0",
+    "rxjs-compat": "^6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
   },

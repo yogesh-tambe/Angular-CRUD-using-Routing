@@ -15,6 +15,8 @@ import { AuthModule } from './auth/auth.module';
 import { httpInterceptorProviders } from './http-interceptors/index';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbdModalBasic } from './auth/login/modal-basic';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -33,7 +35,9 @@ import { NgbdModalBasic } from './auth/login/modal-basic';
     CmspageModule,
     // AdminModule,
     AuthModule,
-    AppRoutingModule,NgbModule
+    AppRoutingModule,NgbModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [Title, httpInterceptorProviders],
   bootstrap: [AppComponent]

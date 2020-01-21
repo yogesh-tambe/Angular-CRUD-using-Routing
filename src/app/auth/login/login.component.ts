@@ -36,16 +36,20 @@ export class LoginComponent implements OnInit {
   get password() { return this.loginForm.get('password'); }
 
   onSubmit() {
+    console.log("from on submit");
     this.submitted = true;
     this.authService.login(this.username.value, this.password.value).subscribe((data) => {
        if (this.authService.isLoggedIn()) {
+        console.log("from if of on submit");
           const redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/admin';
           this.router.navigate([redirect]);
         } else {
+          console.log("from else of on submit");
+          this.ngOnInit();
           this.loginError = 'Username or password is incorrect.';
         }
       },
-      error => this.error = error
+      // error => this.error = error
     );
   }
 }
